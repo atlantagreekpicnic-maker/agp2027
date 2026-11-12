@@ -24,7 +24,29 @@ details[open] .faq-plus{transform:rotate(45deg)}
 .navlink:hover{color:#FF7A1A}
 .darklink{color:#0B1230}
 .darklink:hover{color:#2A3A8C}
-@media (max-width:720px){.navlinks{display:none !important}}
+.mobilemenu{display:none}
+@media (max-width:720px){
+.navlinks{display:none !important}
+.mobilemenu{display:block}
+header > div{flex-wrap:nowrap !important;padding:8px 16px !important;gap:10px !important}
+header > div > a:first-child > span:first-child{width:52px !important;height:52px !important}
+header > div > a:first-child > span:last-child{display:none}
+header > div > a[href="#tickets"]{padding:0 16px !important;margin-left:auto}
+h1{font-size:clamp(40px,13vw,56px) !important}
+section[aria-label="Countdown"] > div > div{flex-wrap:nowrap !important;gap:8px !important;width:100%}
+section[aria-label="Countdown"] > div > div > div{min-width:0 !important;flex:1 1 0;padding:12px 4px !important}
+section[aria-label="Countdown"] > div > div > div > div:first-child{font-size:clamp(30px,10vw,44px) !important}
+section[aria-label="Countdown"] > div > div > div > div:last-child{font-size:10px !important;letter-spacing:1px !important}
+section[aria-label="Gallery"] > div > div:last-child{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+section[aria-label="Gallery"] > div > div:last-child > div{height:140px !important}
+#dj-past > div > div:last-child{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important}
+#dj-past article > div:last-child{padding:12px !important}
+#dj-past h3{font-size:22px !important}
+[role="group"][aria-label="Ticket type"]{gap:8px !important}
+[role="group"][aria-label="Ticket type"] button{padding:0 14px !important;font-size:12px !important;letter-spacing:1px !important}
+footer a{min-height:44px;display:inline-flex;align-items:center}
+footer > div > div:first-child > div{gap:0 !important}
+}
 </style>
 </head>
 <body>
@@ -45,6 +67,17 @@ details[open] .faq-plus{transform:rotate(45deg)}
 <a class="navlink" href="#faq" data-action="goFaq">FAQ</a>
 </nav>
 <a href="#tickets" data-action="goTickets" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 24px; background: var(--accent); color: #0B1230; font-weight: 700; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none">Get Tickets</a>
+<details class="mobilemenu">
+<summary aria-label="Menu" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF; box-sizing: border-box"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></summary>
+<nav aria-label="Mobile" style="position: absolute; left: 0; right: 0; top: 100%; background: #0B1230; border-top: 1px solid #26305E; border-bottom: 2px solid var(--accent); display: flex; flex-direction: column; padding: 4px 16px 16px">
+<a class="navlink" href="#djs" data-action="openDjs" style="min-height: 54px; display: flex; align-items: center; border-bottom: 1px solid #26305E; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 1px; text-transform: uppercase">AGP DJs</a>
+<a class="navlink" href="#book" data-action="goTickets" style="min-height: 54px; display: flex; align-items: center; border-bottom: 1px solid #26305E; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 1px; text-transform: uppercase">Tickets</a>
+<a class="navlink" href="#experience" data-action="goExperience" style="min-height: 54px; display: flex; align-items: center; border-bottom: 1px solid #26305E; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 1px; text-transform: uppercase">Experience</a>
+<a class="navlink" href="#taste" data-action="openTaste" style="min-height: 54px; display: flex; align-items: center; border-bottom: 1px solid #26305E; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 1px; text-transform: uppercase">Taste of AGP</a>
+<a class="navlink" href="#partners" data-action="goPartners" style="min-height: 54px; display: flex; align-items: center; border-bottom: 1px solid #26305E; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 1px; text-transform: uppercase">Vendors &amp; Partners</a>
+<a class="navlink" href="#faq" data-action="goFaq" style="min-height: 54px; display: flex; align-items: center; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 1px; text-transform: uppercase">FAQ</a>
+</nav>
+</details>
 </div>
 </header>
 
@@ -767,6 +800,8 @@ sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg'
     if (el) el.scrollIntoView({ block: 'start' });
   }
   function setPage(page, scrollId, push) {
+    var menus = document.querySelectorAll('details.mobilemenu');
+    for (var mi = 0; mi < menus.length; mi++) menus[mi].removeAttribute('open');
     var changed = state.page !== page;
     state.page = page;
     render();
