@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MG3SX4KS');</script>
+<!-- End Google Tag Manager -->
 <title>Atlanta Greek Picnic 2027</title>
 <meta name="description" content="Atlanta Greek Picnic 2027. Main event Saturday, June 12, 2027 at Atlantic Station, Atlanta. A national celebration of Divine Nine, HBCU and the culture since 2004.">
 <link rel="icon" type="image/png" href="assets/agp-2027-logo.png">
@@ -50,6 +53,9 @@ footer > div > div:first-child > div{gap:0 !important}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MG3SX4KS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div id="pagetop" style="font-family: Inter, system-ui, sans-serif; color: #FFFFFF; background: #0B1230; line-height: 1.5">
 
 <header style="position: sticky; top: 0; z-index: 10; background: #0B1230; border-bottom: 1px solid #26305E">
@@ -790,6 +796,8 @@ sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg'
   var tabPages = { taste: 'taste', tickets: 'book', exp: 'experience', dj: 'djs' };
   var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#FF7A1A';
 
+  window.dataLayer = window.dataLayer || [];
+  function track(data) { window.dataLayer.push(data); }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -805,6 +813,7 @@ sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg'
     var changed = state.page !== page;
     state.page = page;
     render();
+    if (changed) track({ event: 'virtual_page_view', page_name: page });
     if (push !== false && changed && window.history && history.pushState) {
       try { history.pushState({ page: page, ticket: state.ticket }, ''); } catch (e) {}
     }
@@ -951,10 +960,16 @@ sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg'
     var fn = actions[el.getAttribute('data-action')];
     if (fn) { e.preventDefault(); fn(); }
   });
+  document.addEventListener('click', function (e) {
+    var buy = e.target.closest ? e.target.closest('a[href*="myeasol.com"]') : null;
+    if (!buy) return;
+    track({ event: 'buy_click', ticket_type: tickets[state.ticket].name, link_text: buy.textContent.trim(), link_url: buy.href });
+  });
   document.addEventListener('submit', function (e) {
     var name = e.target.getAttribute('data-submit');
     if (!name || !submits[name]) return;
     e.preventDefault();
+    track({ event: 'form_submit', form_name: { join: 'email_signup', submit: 'vendor_application', submitDj: 'dj_registration' }[name] || name });
     submits[name]();
     render();
   });
