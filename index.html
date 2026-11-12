@@ -785,11 +785,11 @@ footer > div > div:first-child > div{gap:0 !important}
 (function () {
   'use strict';
   const tickets = {
-ga: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-ga.jpg', alt: 'The crowd at AGP with hands in the air', name: 'General Admission', tag: 'Picnic day access', desc: 'Your pass to the main picnic at Atlantic Station: every stage, every stroll, the vendor village and the food.', perks: ['Entry to the main picnic at Atlantic Station', 'All stages, strolls and performances', 'Food vendors, bars and the vendor village'], options: [{ id: 'ga', label: 'General Admission', note: 'Picnic day · Sat June 12' }] },
-vip: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-vip.jpg', alt: 'Two AGP guests in white smiling for the camera', name: 'VIP', tag: 'Skip the line, upgrade the day', desc: 'Come in through the dedicated VIP entrance, then settle into the VIP area with its own bars and service.', perks: ['Everything in General Admission', 'Dedicated VIP entrance', 'VIP area with dedicated bars and service'], options: [{ id: 'vip', label: 'VIP', note: 'Picnic day · Sat June 12' }] },
-weekend: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-weekend.jpg', alt: 'A group of friends smiling at AGP', name: 'Weekend Pass', tag: 'Every official AGP event', desc: 'One pass for the whole AGP weekend, from the kick-off through picnic day.', perks: ['Picnic day access', 'Entry to official weekend events', '[ADD WEEKEND PASS PERKS]'], options: [{ id: 'weekend', label: 'Weekend Pass', note: 'All official AGP 2027 events' }] },
-sections: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-sections.jpg', alt: 'A chapter posing together at AGP', name: 'Sections & Tables', tag: 'For chapters, line brothers and line sisters', desc: 'Reserved space for your chapter, your line or your crew, with VIP entry for your party. Availability is limited.', perks: ['Reserved space for your group', 'VIP entry for your party', '[ADD SECTION PERKS]'], options: [{ id: 'section', label: 'Section', note: 'Up to [#] guests' }, { id: 'table', label: 'Table', note: 'Up to [#] guests' }] },
-sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg', alt: 'View from the AGP stage over the crowd', name: 'Sky View', tag: 'The best seat at the picnic', desc: 'A raised platform looking out over the stage and the whole yard, with a private table and bottle service for your party. Tables are limited and reserved for picnic day only.', perks: ['Elevated views of the stage and the yard', 'Private table with bottle service', 'VIP entry for your whole party', '[ADD SKY VIEW PERKS]'], options: [{ id: 'skytable', label: 'Sky View Table', note: 'Up to [#] guests' }, { id: 'skyfront', label: 'Front Row Sky View Table', note: 'Up to [#] guests · closest to the stage' }] }
+ga: { url: 'https://www.atlantagreekpicnic.com/book-saturday', img: 'assets/ticket-ga.jpg', alt: 'The crowd at AGP with hands in the air', name: 'General Admission', tag: 'Picnic day access', desc: 'Your pass to the main picnic at Atlantic Station: every stage, every stroll, the vendor village and the food.', perks: ['Entry to the main picnic at Atlantic Station', 'All stages, strolls and performances', 'Food vendors, bars and the vendor village'], options: [{ id: 'ga', label: 'General Admission', note: 'Picnic day · Sat June 12' }] },
+vip: { url: 'https://www.atlantagreekpicnic.com/book-vip', img: 'assets/ticket-vip.jpg', alt: 'Two AGP guests in white smiling for the camera', name: 'VIP', tag: 'Skip the line, upgrade the day', desc: 'Come in through the dedicated VIP entrance, then settle into the VIP area with its own bars and service.', perks: ['Everything in General Admission', 'Dedicated VIP entrance', 'VIP area with dedicated bars and service'], options: [{ id: 'vip', label: 'VIP', note: 'Picnic day · Sat June 12' }] },
+weekend: { url: 'https://www.atlantagreekpicnic.com/book-saturday', img: 'assets/ticket-weekend.jpg', alt: 'A group of friends smiling at AGP', name: 'Weekend Pass', tag: 'Every official AGP event', desc: 'One pass for the whole AGP weekend, from the kick-off through picnic day.', perks: ['Picnic day access', 'Entry to official weekend events', '[ADD WEEKEND PASS PERKS]'], options: [{ id: 'weekend', label: 'Weekend Pass', note: 'All official AGP 2027 events' }] },
+sections: { url: 'https://www.atlantagreekpicnic.com/book-saturday', img: 'assets/ticket-sections.jpg', alt: 'A chapter posing together at AGP', name: 'Sections & Tables', tag: 'For chapters, line brothers and line sisters', desc: 'Reserved space for your chapter, your line or your crew, with VIP entry for your party. Availability is limited.', perks: ['Reserved space for your group', 'VIP entry for your party', '[ADD SECTION PERKS]'], options: [{ id: 'section', label: 'Section', note: 'Up to [#] guests' }, { id: 'table', label: 'Table', note: 'Up to [#] guests' }] },
+sky: { url: 'https://www.atlantagreekpicnic.com/book-saturday', img: 'assets/ticket-skyview.jpg', alt: 'View from the AGP stage over the crowd', name: 'Sky View', tag: 'The best seat at the picnic', desc: 'A raised platform looking out over the stage and the whole yard, with a private table and bottle service for your party. Tables are limited and reserved for picnic day only.', perks: ['Elevated views of the stage and the yard', 'Private table with bottle service', 'VIP entry for your whole party', '[ADD SKY VIEW PERKS]'], options: [{ id: 'skytable', label: 'Sky View Table', note: 'Up to [#] guests' }, { id: 'skyfront', label: 'Front Row Sky View Table', note: 'Up to [#] guests · closest to the stage' }] }
 };
   var EVENT_DATE = '2027-06-12T12:00:00-04:00';
   var state = { page: 'home', ticket: 'ga', qty: {}, joined: false, sent: false, djSent: false };
@@ -797,7 +797,21 @@ sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg'
   var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#FF7A1A';
 
   window.dataLayer = window.dataLayer || [];
-  function track(data) { window.dataLayer.push(data); }
+  function gtag() { window.dataLayer.push(arguments); }
+  function track(data, gaName, gaParams, fbName, fbParams, fbCustom) {
+    window.dataLayer.push(data);
+    if (gaName) gtag('event', gaName, gaParams || {});
+    if (fbName && typeof window.fbq === 'function') window.fbq(fbCustom ? 'trackCustom' : 'track', fbName, fbParams || {});
+  }
+  var hashPages = { tickets: 'book', experience: 'experience', djs: 'djs', taste: 'taste' };
+  function hashFor(page) {
+    for (var k in hashPages) if (hashPages[k] === page) return '#/' + k;
+    return location.pathname + location.search;
+  }
+  function pageFromHash() {
+    var m = /^#\/([\w-]+)/.exec(location.hash);
+    return (m && hashPages[m[1]]) || 'home';
+  }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -815,7 +829,7 @@ sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg'
     render();
     if (changed) track({ event: 'virtual_page_view', page_name: page });
     if (push !== false && changed && window.history && history.pushState) {
-      try { history.pushState({ page: page, ticket: state.ticket }, ''); } catch (e) {}
+      try { history.pushState({ page: page, ticket: state.ticket }, '', hashFor(page)); } catch (e) {}
     }
     scrollToId(scrollId || 'pagetop');
   }
@@ -961,23 +975,27 @@ sky: { url: 'https://sites-ltqzq.myeasol.com/', img: 'assets/ticket-skyview.jpg'
     if (fn) { e.preventDefault(); fn(); }
   });
   document.addEventListener('click', function (e) {
-    var buy = e.target.closest ? e.target.closest('a[href*="myeasol.com"]') : null;
+    var buy = e.target.closest ? e.target.closest('a[href*="atlantagreekpicnic.com/book"]') : null;
     if (!buy) return;
-    track({ event: 'buy_click', ticket_type: tickets[state.ticket].name, link_text: buy.textContent.trim(), link_url: buy.href });
+    var info = { ticket_type: tickets[state.ticket].name, link_text: buy.textContent.trim(), link_url: buy.href };
+    track({ event: 'buy_click', ticket_type: info.ticket_type, link_text: info.link_text, link_url: info.link_url },
+      'buy_click', info, 'BuyClick', { ticket_type: info.ticket_type }, true);
   });
   document.addEventListener('submit', function (e) {
     var name = e.target.getAttribute('data-submit');
     if (!name || !submits[name]) return;
     e.preventDefault();
-    track({ event: 'form_submit', form_name: { join: 'email_signup', submit: 'vendor_application', submitDj: 'dj_registration' }[name] || name });
+    var formName = { join: 'email_signup', submit: 'vendor_application', submitDj: 'dj_registration' }[name] || name;
+    track({ event: 'form_submit', form_name: formName }, 'generate_lead', { form_name: formName }, 'Lead', { content_name: formName });
     submits[name]();
     render();
   });
   window.addEventListener('popstate', function (e) {
-    var st = e.state || { page: 'home' };
+    var st = e.state || {};
     if (st.ticket && tickets[st.ticket]) state.ticket = st.ticket;
-    setPage(st.page || 'home', 'pagetop', false);
+    setPage(pageFromHash(), 'pagetop', false);
   });
+  state.page = pageFromHash();
   render();
   setInterval(renderBinds, 1000);
 })();

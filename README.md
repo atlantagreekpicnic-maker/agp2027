@@ -12,7 +12,8 @@ No build step. Open `index.html` in a browser, or host the folder on any static 
 ## Still to finish before launch
 
 - Ticket prices, section and table sizes, schedule dates, times and venues are placeholders in square brackets.
-- The Buy buttons all open the Easol site home page (https://sites-ltqzq.myeasol.com/). Replace each ticket's `url` in `index.html` with its own Easol product link.
+- Buy buttons go to the Easol booking pages on www.atlantagreekpicnic.com. General Admission, Weekend Pass, Sections & Tables and Sky View all point to /book-saturday and VIP to /book-vip until each has its own Easol product link (set each ticket's `url` in `index.html`).
+- Tracking: Google Tag Manager container GTM-MG3SX4KS (shared with the Easol site) loads Google Analytics and the Meta Pixel. The site sends `buy_click` and `generate_lead` to Analytics and `BuyClick` and `Lead` to Meta.
 - The email sign-up, vendor application and DJ registration forms show a confirmation but do not send or save anything.
 - Instagram, Facebook and AGP Foundation links in the footer have no address yet.
 - Photo slots marked `[Photo: ...]` need real images. Past AGP DJ cards need names and photos.
